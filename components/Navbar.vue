@@ -37,14 +37,14 @@ export default {
   data() {
     return {
       login: false
-    };
+    }
   },
   methods: {
     goLogin() {
-      this.$router.push("/login");
+      this.$router.push('/login')
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 @val: 18%;
@@ -75,7 +75,7 @@ export default {
   font-weight: 500;
 }
 .items {
-  width: calc(~"90% - @{val}");
+  width: calc(~'90% - @{val}');
   display: inline-block;
   border-bottom: none;
   @media screen and(max-width: 1614px) {

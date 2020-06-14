@@ -69,25 +69,25 @@ export default {
     return {
       login: true,
       loginForm: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       },
       registForm: {
-        username: "",
-        password: "",
-        email: ""
+        username: '',
+        password: '',
+        email: ''
       }
-    };
+    }
   },
   methods: {
     goRegister() {
-      this.login = false;
+      this.login = false
     },
     goLogin() {
-      this.login = true;
+      this.login = true
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 .container {
