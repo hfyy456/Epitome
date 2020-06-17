@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <div class="headers">
-      <h1>What's popular</h1>
-    </div>
     <div class="row">
       <div v-for="(item) in srcList" :key="item.src" :style="{'width':item.per+'%'}" class="col">
         <a-card hoverable @mouseenter="hover" @mouseleave="leave">
@@ -33,6 +30,7 @@
 <script>
 export default {
   asyncData(context) {
+    name: 'gallery-popular'
     var srcList = [
       {
         src: '//live.staticflickr.com/65535/49993813052_c561883501_h.jpg',
@@ -86,12 +84,8 @@ export default {
 .container {
   margin: 0 auto;
   background-color: #f3f5f6;
+  padding-top:10px;
   min-height: calc(100vh - 104px);
-  .headers {
-    width: 94.5%;
-    margin: 0 auto;
-    background-color: #fff;
-  }
   .row {
     width: 94.5%;
     margin: 0 auto;

@@ -1,12 +1,12 @@
 <template>
   <div class="nav">
     <span class="logo">Epitome</span>
-    <a-menu v-model="current" mode="horizontal" class="items">
+    <a-menu mode="horizontal" class="items">
       <a-sub-menu>
         <span slot="title" class="item-1">Gallery</span>
         <a-menu-item-group>
           <a-menu-item key="gallery:1">
-            <a href="gallery/popular">Popular</a>
+            <nuxt-link to="/gallery/popular">Popular</nuxt-link>
           </a-menu-item>
           <a-menu-item key="gallery:2">Option 2</a-menu-item>
         </a-menu-item-group>
@@ -28,7 +28,9 @@
         src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
         :size="38"
       />
-      <a-button v-else class="sign" @click="goLogin">Log in</a-button>
+      <a-button v-else class="sign">
+        <nuxt-link to="/login">Log in</nuxt-link>
+      </a-button>
     </span>
   </div>
 </template>
@@ -39,11 +41,7 @@ export default {
       login: false
     }
   },
-  methods: {
-    goLogin() {
-      this.$router.push('/login')
-    }
-  }
+  methods: {}
 }
 </script>
 <style lang="less" scoped>
