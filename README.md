@@ -19,4 +19,6 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).  
+首页
+![alt 属性文本](http://qiniu.hfsblog.com/screenshot-localhost_3000-2020.06.18-10_42_51.png)
