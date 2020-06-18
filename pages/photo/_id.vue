@@ -10,18 +10,36 @@
         <a-icon v-else type="shrink" class="right" @click="exitScreen" />
       </div>
     </div>
-    <div class="information-box">
-      <div class="author">
-        <div class="actions">
-          <a-button type="primary" shape="square" icon="download" :size="size" />
-          <a-button type="primary" shape="square" icon="star" :size="size" />
-          <a-button type="primary" shape="square" icon="share-alt" :size="size" />
+    <div class="main-container">
+      <div class="information-box">
+        <div class="author">
+          <div class="actions">
+            <a-button type="primary" shape="square" icon="download" :size="size" />
+            <a-button type="primary" shape="square" icon="star" :size="size" />
+            <a-button type="primary" shape="square" icon="share-alt" :size="size" />
+          </div>
+          <authorCard />
+          <a-divider />
         </div>
-        <authorCard />
-        <a-divider />
+      </div>
+      <div class="comment-box">
+        <div class="status">
+          <div>
+            <span class="num">888</span>
+            <span class="items">views</span>
+          </div>
+          <div>
+            <span class="num">888</span>
+            <span class="items">faves</span>
+          </div>
+          <div>
+            <span class="num">888</span>
+            <span class="items">comments</span>
+          </div>
+        </div>
+        <div class="comment-list"></div>
       </div>
     </div>
-    <div class="comment-box"></div>
   </div>
 </template>
 <script>
@@ -106,16 +124,52 @@ export default {
   }
 }
 .information-box {
+  width: 60%;
   background-color: #f5f5f5;
   padding: 10px;
-  display: inline-block;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
   .author {
     padding: 10px;
     background-color: #fff;
   }
 }
+.main-container {
+  display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
 .comment-box {
-    display: inline-block;
-
+  width: 40%;
+  padding: 10px;
+  background-color: #f5f5f5;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  .status {
+    padding: 10px;
+    background-color: #fff;
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+    .num {
+      color: #000;
+      width: auto;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 18px;
+      padding-right: 5px;
+    }
+    .items {
+      width: auto;
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      color: #898989;
+      padding-right: 5px;
+    }
+  }
 }
 </style>
