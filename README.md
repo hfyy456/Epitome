@@ -21,4 +21,4 @@ $ npm run generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).  
 # 首页
-![alt 属性文本](./screenshoots/home.png)
+![alt 属性文本](./srceenshoots/home.png)
