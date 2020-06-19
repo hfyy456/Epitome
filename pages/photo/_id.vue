@@ -18,6 +18,13 @@
             <a-button type="primary" shape="square" icon="star" :size="size" />
             <a-button type="primary" shape="square" icon="share-alt" :size="size" />
           </div>
+          <div class="category">
+            Categories:
+            <a-tag>pink</a-tag>
+            <a-tag>red</a-tag>
+            <a-tag>orange</a-tag>
+            <a-tag>green</a-tag>
+          </div>
           <authorCard />
           <a-divider />
         </div>
@@ -36,7 +43,7 @@
             <span class="num">888</span>
             <span class="items">comments</span>
           </div>
-          <div style="font-size:16px;font-weight:700;">
+          <div class="date">
             <span>Taken on</span>
             <span>June 2, 2020</span>
           </div>
@@ -87,7 +94,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
 .photo-container {
   height: calc((100vh - 72px) - 198px);
   min-height: 420px;
@@ -134,37 +140,66 @@ export default {
   }
 }
 .information-box {
-  width: 65%;
+  width: 63%;
   background-color: #f5f5f5;
   padding: 10px;
   @media screen and (max-width: 768px) {
     width: 100%;
+    padding: 0px;
   }
   .author {
     padding: 10px;
     background-color: #fff;
   }
+  .category {
+    padding: 10px;
+    font-size: 18px;
+    /deep/ .ant-tag {
+      font-size: 16px;  
+      padding: 4px;
+      cursor: pointer;
+    }
+  }
 }
 .main-container {
   margin: 0 auto;
-  width: 65%;
+  width: 67%;
   display: flex;
+  @media screen and (max-width: 1366px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 1120px) {
+    width: 90%;
+  }
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    width: 100%;
   }
 }
 .comment-box {
-  width: 35%;
+  width: 37%;
   padding: 10px;
   background-color: #f5f5f5;
   @media screen and (max-width: 768px) {
     width: 100%;
+    padding: 0;
   }
   .status {
     padding: 10px;
     background-color: #fff;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    .date {
+      font-size: 16px;
+      font-weight: 700;
+      @media screen and (max-width: 1120px) and (min-width: 1024px) {
+        padding-top: 20px;
+      }
+      @media screen and (max-width: 330px) {
+        padding-top: 20px;
+      }
+    }
     .num {
       color: #000;
       width: auto;

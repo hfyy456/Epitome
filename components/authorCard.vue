@@ -28,6 +28,10 @@ export default {
 .author-card {
   margin: 10px;
   padding: 10px;
+  @media screen and(max-width: 768px) {
+    padding: 0;
+    margin: 10px;
+  }
   .avatar-container {
     display: inline-block;
     vertical-align: middle;
