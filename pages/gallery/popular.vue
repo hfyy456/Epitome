@@ -84,7 +84,7 @@ export default {
 .container {
   margin: 0 auto;
   background-color: #f3f5f6;
-  padding-top:10px;
+  padding-top: 10px;
   min-height: calc(100vh - 104px);
   .row {
     width: 94.5%;
@@ -133,8 +133,6 @@ export default {
           .star {
             font-size: 14px;
             color: #fff;
-            span {
-            }
           }
         }
       }
