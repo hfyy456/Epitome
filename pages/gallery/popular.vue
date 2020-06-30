@@ -138,6 +138,7 @@ export default {
       }
     }
   }
+
   /deep/ .ant-card-body {
     padding: 0;
   }

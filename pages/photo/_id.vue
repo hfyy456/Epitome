@@ -155,7 +155,7 @@ export default {
     padding: 10px;
     font-size: 18px;
     /deep/ .ant-tag {
-      font-size: 16px;  
+      font-size: 16px;
       padding: 4px;
       cursor: pointer;
     }

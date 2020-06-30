@@ -7,6 +7,9 @@
         <a-menu-item key="popular">
           <nuxt-link to="/gallery/popular">Popular</nuxt-link>
         </a-menu-item>
+        <a-menu-item key="newest">
+          <nuxt-link to="/gallery/newest">Newest</nuxt-link>
+        </a-menu-item>
       </a-menu>
     </div>
     <div class="content">
@@ -39,6 +42,9 @@ export default {
 <style lang="less" scoped>
 .headers {
   background-color: #fff;
+  .category {
+    display: inline-block;
+  }
   .title {
     padding-left: 50px;
     margin: 0;
