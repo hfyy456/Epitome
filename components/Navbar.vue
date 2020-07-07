@@ -1,11 +1,18 @@
 <template>
     <div class="nav">
-        <span class="logo">Epitome</span>
-        <a-menu mode="horizontal"
-                class="items">
+        <span
+            class="logo"
+            @click="goIndex"
+        >Epitome</span>
+        <a-menu
+            mode="horizontal"
+            class="items"
+        >
             <a-sub-menu>
-                <span slot="title"
-                      class="item-1">Gallery</span>
+                <span
+                    slot="title"
+                    class="item-1"
+                >Gallery</span>
                 <a-menu-item-group>
                     <a-menu-item key="gallery:1">
                         <nuxt-link to="/gallery/popular">Popular</nuxt-link>
@@ -13,42 +20,62 @@
                     <a-menu-item key="gallery:2">Option 2</a-menu-item>
                 </a-menu-item-group>
             </a-sub-menu>
-            <a-menu-item key="a"
-                         class="item-2">
-                <a href="https://antdv.com"
-                   target="_blank"
-                   rel="noopener noreferrer">Community</a>
+            <a-menu-item
+                key="a"
+                class="item-2"
+            >
+                <a
+                    href="https://antdv.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >Community</a>
             </a-menu-item>
         </a-menu>
         <span>
-            <a-icon type="search"
-                    style="font-size:15px;" />
-            <a-divider type="vertical"
-                       style="margin-left:2px;font-size:20px;" />
+            <a-icon
+                type="search"
+                style="font-size:15px;"
+            />
+            <a-divider
+                type="vertical"
+                style="margin-left:2px;font-size:20px;"
+            />
             <input class="search-input" />
         </span>
         <span>
-            <a-avatar v-if="login"
-                      class="avatar"
-                      shape="square"
-                      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                      :size="38" />
-            <a-button v-else
-                      class="sign">
+            <a-avatar
+                v-if="login"
+                class="avatar"
+                shape="square"
+                :src="userInfo.avatar"
+                :size="38"
+            />
+            <a-button
+                v-else
+                class="sign"
+            >
                 <nuxt-link to="/login">Log in</nuxt-link>
             </a-button>
         </span>
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+import { getToken } from '@/plugins/cookies'
 export default {
     data() {
-        return {
-            login: false
-        };
+        return {}
     },
-    methods: {}
-};
+    computed: {
+        ...mapGetters({ userInfo: 'userInfo', login: 'isLogin' }),
+    },
+    mounted() {},
+    methods: {
+        goIndex() {
+            this.$router.push('/')
+        },
+    },
+}
 </script>
 <style lang="less" scoped>
 @val: 18%;

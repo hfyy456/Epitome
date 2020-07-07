@@ -3,9 +3,11 @@
         <div class="headers">
             <h1 class="title">{{this.$route.path| setTitle}}</h1>
             <h2 class="subtitle">{{this.$route.path| setSubtitle}}</h2>
-            <a-menu v-model="current"
-                    class="tabs"
-                    mode="horizontal">
+            <a-menu
+                v-model="current"
+                class="tabs"
+                mode="horizontal"
+            >
                 <a-menu-item key="popular">
                     <nuxt-link to="/gallery/popular">Popular</nuxt-link>
                 </a-menu-item>
@@ -25,21 +27,21 @@ export default {
     filters: {
         setSubtitle(value) {
             if (value == '/gallery/popular') {
-                return 'See recently added photos with the highest Pulse.';
+                return 'See recently added photos with the highest Pulse.'
             }
         },
         setTitle(value) {
             if (value == '/gallery/popular') {
-                return "What's popular these days";
+                return "What's popular these days"
             }
-        }
+        },
     },
     data() {
         return {
-            current: ['popular']
-        };
-    }
-};
+            current: ['popular'],
+        }
+    },
+}
 </script>
 <style lang="less" scoped>
 .headers {

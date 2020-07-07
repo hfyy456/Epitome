@@ -141,6 +141,7 @@
     </div>
 </template>
 <script>
+import md5 from 'blueimp-md5'
 export default {
     data() {
         let validatePass = (rule, value, callback) => {
@@ -228,33 +229,46 @@ export default {
             this.login = true
         },
         async submitLoginForm(formName) {
+            let params = {
+                ...this.loginForm,
+            }
+            params['password'] = md5(params['password'])
             this.$refs[formName].validate(valid => {
                 if (valid) {
-                    this.$axios.post('user/login', this.loginForm).then(res => {
-                        const code = res.code
-                        if (code == 20000) {
-                        } else {
+                    this.$store.dispatch('user/login', params).then(
+                        resolve => {
+                            this.$message.success(resolve.message)
+                            this.$refs[formName].clearValidate()
+                            this.$router.push('/')
+                        },
+                        reject => {
+                            this.$message.error(reject)
                             this.$refs[formName].clearValidate()
                         }
-                    })
+                    )
                 } else {
                     return false
                 }
             })
         },
         async submitRegistForm(formName) {
+            let params = {
+                ...this.registForm,
+            }
+            params['password'] = md5(params['password'])
             this.$refs[formName].validate(valid => {
                 if (valid) {
-                    this.$refs[formName].clearValidate()
-                    this.$axios
-                        .post('user/regist', this.registForm)
-                        .then(res => {
-                            const code = res.code
-                            if (code == 20000) {
-                            } else {
-                                this.$refs[formName].clearValidate()
-                            }
-                        })
+                    this.$store.dispatch('user/regist', params).then(
+                        resolve => {
+                            this.$message.success(resolve.message)
+                            this.$refs[formName].clearValidate()
+                            this.$router.push('/')
+                        },
+                        reject => {
+                            this.$message.error(reject)
+                            this.$refs[formName].clearValidate()
+                        }
+                    )
                 } else {
                     return false
                 }

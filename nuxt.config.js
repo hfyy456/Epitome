@@ -4,6 +4,9 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  router: {
+    middleware: 'permission'
+  },
   axios: {
     prefix: '/api',
     credentials: true,

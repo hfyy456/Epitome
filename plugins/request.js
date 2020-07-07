@@ -1,17 +1,16 @@
 import { message } from 'ant-design-vue';
+import { getToken } from '@/plugins/cookies'
 export default function (app) {
     const axios = app.$axios
     // 基本配置
     axios.defaults.timeout = 10000
     axios.defaults.headers.post['Content-Type'] = 'application/json'
-    axios.defaults.headers.patch['Content-Type'] = 'application/json'
     axios.defaults.headers.put['Content-Type'] = 'application/json'
-
-    // 请求回调
-    axios.onRequest((config) => {
-    })
-
-
+    axios.defaults.withCredentials = false
+    axios.defaults.headers.patch['Content-Type'] = 'application/json'
+    if (getToken()) {
+        axios.defaults.headers.post['authorization'] = getToken()
+    }
     axios.interceptors.response.use(res => {
         const code = res.data.code
         const msg = res.data.message
@@ -25,7 +24,7 @@ export default function (app) {
     })
     // 错误回调
     axios.onError((error) => {
-        console.log(error)
+        //console.log(error)
         switch (error.response.status) {
             case 401:
                 location.href = '/login'
