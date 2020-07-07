@@ -8,7 +8,9 @@ export default function ({ route, redirect, store }) {
         redirect({ path: '/login' })
     } else {
         if (path == '/login') {
-            redirect({ path: '/' })
+            if (getToken()) {
+                redirect({ path: '/' })
+            }
         }
         store
             .dispatch('user/getInfo')

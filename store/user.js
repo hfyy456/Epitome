@@ -1,4 +1,4 @@
-import { setToken } from '@/plugins/cookies'
+import { setToken, removeToken } from '@/plugins/cookies'
 export const state = () => ({
     userInfo: null,
     token: '',
@@ -61,5 +61,11 @@ export const actions = {
                 }
             })
         })
+    },
+    logout({ commit }) {
+        commit('SET_LOGIN', false)
+        removeToken()
+        commit('SET_USERINFO', {})
+        this.$router.go('/')
     }
 }

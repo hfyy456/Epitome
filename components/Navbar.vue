@@ -43,13 +43,35 @@
             <input class="search-input" />
         </span>
         <span>
-            <a-avatar
-                v-if="login"
-                class="avatar"
-                shape="square"
-                :src="userInfo.avatar"
-                :size="38"
-            />
+            <template v-if="login">
+                <a-dropdown placement="bottomCenter">
+                    <a-avatar
+                        class="avatar"
+                        shape="square"
+                        :src="userInfo.avatar"
+                        :size="38"
+                    />
+                    <a-menu slot="overlay">
+                        <a-menu-item>
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="http://www.alipay.com/"
+                            >1st menu item</a>
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href="http://www.taobao.com/"
+                            >2nd menu item</a>
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a @click="logout">Log out</a>
+                        </a-menu-item>
+                    </a-menu>
+                </a-dropdown>
+            </template>
             <a-button
                 v-else
                 class="sign"
@@ -73,6 +95,9 @@ export default {
     methods: {
         goIndex() {
             this.$router.push('/')
+        },
+        logout() {
+            this.$store.dispatch('user/logout')
         },
     },
 }
