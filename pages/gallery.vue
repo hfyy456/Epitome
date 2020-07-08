@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div></div>
         <div class="headers">
             <h1 class="title">{{this.$route.path| setTitle}}</h1>
             <h2 class="subtitle">{{this.$route.path| setSubtitle}}</h2>
