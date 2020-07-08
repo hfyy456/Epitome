@@ -22,14 +22,15 @@
                 </ul>
             </div>
             <div>
-                <a-tabs default-active-key="1">
+                <a-tabs
+                    style="margin:0"
+                    default-active-key="1"
+                >
                     <a-tab-pane
                         key="1"
                         tab="Photos"
                     >
-                        <client-only>
-                            <PhotoContent />
-                        </client-only>
+                        <PhotoContent :srcList='srcList' />
                     </a-tab-pane>
                     <a-tab-pane
                         key="2"
@@ -51,6 +52,47 @@
 <script>
 import PhotoContent from '@/components/PhotoContent'
 export default {
+    asyncData(context) {
+        name: 'gallery-popular'
+        var srcList = [
+            {
+                src:
+                    '//live.staticflickr.com/65535/49993813052_c561883501_h.jpg',
+                width: 1325,
+                per: 0,
+            },
+            {
+                src:
+                    '//live.staticflickr.com/65535/49998466927_538c8d036d_h.jpg',
+                width: 1325,
+                per: 0,
+            },
+            {
+                src:
+                    '//live.staticflickr.com/65535/49998512131_b8785906b3_c.jpg',
+                width: 534,
+                per: 0,
+            },
+            {
+                src:
+                    '//live.staticflickr.com/65535/49991706422_518d3761c8_h.jpg',
+                width: 1325,
+                per: 0,
+            },
+        ]
+        function setCol(srcList) {
+            var total = 0
+            for (var i = 0; i < srcList.length; i++) {
+                total += srcList[i].width
+            }
+            for (var i = 0; i < srcList.length; i++) {
+                srcList[i].per = (srcList[i].width / total) * 100
+            }
+            return srcList
+        }
+        srcList = setCol(srcList)
+        return { srcList }
+    },
     components: {
         PhotoContent,
     },
@@ -78,6 +120,9 @@ export default {
     }
     /deep/ .ant-tabs-tab {
         font-size: 18px;
+    }
+    /deep/ .ant-tabs-bar {
+        margin: 0;
     }
 }
 </style>

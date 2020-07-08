@@ -1,32 +1,29 @@
-import { getToken } from '@/plugins/cookies'
 import { message } from 'ant-design-vue'
 
 export default ({ app }) => {
-    app.router.beforeEach((to, from, next) => {
-        console.log(to.path)
+    app.router.beforeEach(async (to, from, next) => {
         const path = to.path
-        const token = getToken()
-        if (!token && path != '/' && path != '/login') {
-            next('/login')
-        } else {
+        const token = app.$cookies.get('token')
+        //console.log(token)
+        if (token) {
             if (path == '/login') {
-                console.log(path)
-                console.log(token)
-                if (token) {
-                    app.router.go(-1)
-                } else {
-                    next()
-                }
+                app.router.push({ path: '/' })
             } else {
                 app.store
                     .dispatch('user/getInfo')
                     .then(
                         resolve => { next() },
-                        reject => { }
+                        reject => { app.router.push({ path: '/login' }) }
                     )
-                    .catch(e => { next('/login') })
+                    .catch(e => { app.router.push({ path: '/login' }) })
             }
 
+        } else {
+            if (path == '/' || path == '/login') {
+                next()
+            } else {
+                app.router.push({ path: '/login' })
+            }
         }
     })
 }

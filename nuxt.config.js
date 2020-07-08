@@ -10,11 +10,11 @@ module.exports = {
 
   axios: {
     prefix: '/api',
-    credentials: false,
-    proxy: false
+    credentials: true,
+    proxy: true
   },
   proxy: {
-    '/api/': {
+    '/api': {
       target: 'http://127.0.0.1:10086/', // 目标接口域名
       changeOrigin: true, // 表示是否跨域
     }
@@ -45,8 +45,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/permission',
-    '@/plugins/antd-ui',
-    '@/plugins/request'
+    { src: '@/plugins/antd-ui', ssr: true },
+    '@/plugins/request',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -57,6 +57,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'cookie-universal-nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
   ],

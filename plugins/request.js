@@ -1,15 +1,17 @@
 import { message } from 'ant-design-vue';
-import { getToken } from '@/plugins/cookies'
-export default function (app) {
+export default function ({ app }) {
     const axios = app.$axios
+    const cookies = app.$cookies
+    let token = cookies.get('token')
     // 基本配置
     axios.defaults.timeout = 10000
     axios.defaults.headers.post['Content-Type'] = 'application/json'
     axios.defaults.headers.put['Content-Type'] = 'application/json'
     axios.defaults.withCredentials = false
     axios.defaults.headers.patch['Content-Type'] = 'application/json'
-    if (getToken()) {
-        axios.defaults.headers.post['authorization'] = getToken()
+    console.log(token)
+    if (token) {
+        axios.defaults.headers.post['authorization'] = token
     }
     axios.interceptors.response.use(res => {
         const code = res.data.code
@@ -17,7 +19,6 @@ export default function (app) {
         if (code != 20000 && code != 50000) {
             message.error(msg)
         } else {
-            console.log(res)
             return res.data
         }
 

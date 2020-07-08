@@ -45,6 +45,7 @@
         <span>
             <template v-if="login">
                 <a-dropdown placement="bottomCenter">
+
                     <a-avatar
                         class="avatar"
                         shape="square"
@@ -79,7 +80,6 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { getToken } from '@/plugins/cookies'
 export default {
     data() {
         return {}
@@ -94,7 +94,7 @@ export default {
         },
         logout() {
             this.$store.dispatch('user/logout').then(res => {
-                this.$router.go('/')
+                this.goIndex()
             })
         },
     },
@@ -117,6 +117,7 @@ export default {
     }
 }
 .avatar {
+    display: inline-block;
     position: relative;
     bottom: 3px;
     cursor: pointer;

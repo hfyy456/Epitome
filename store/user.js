@@ -1,4 +1,3 @@
-import { setToken, removeToken } from '@/plugins/cookies'
 export const state = () => ({
     userInfo: null,
     token: '',
@@ -25,7 +24,7 @@ export const actions = {
                 if (code == 20000) {
                     commit('SET_LOGIN', true)
                     commit('SET_USERINFO', res.data)
-                    setToken(res.token)
+                    this.$cookies.set('token', res.token)
                     resolve(res)
                 }
                 reject(res.message)
@@ -53,7 +52,7 @@ export const actions = {
                 const code = res.code
                 if (code == 20000) {
                     commit('SET_LOGIN', true)
-                    setToken(res.token)
+                    this.$cookies.set('token', res.token)
                     commit('SET_USERINFO', res.data)
                     resolve(res)
                 } else {
@@ -65,7 +64,7 @@ export const actions = {
     logout({ commit }) {
         return new Promise((resolve) => {
             commit('SET_LOGIN', false)
-            removeToken()
+            this.$cookies.removeAll()
             commit('SET_USERINFO', {})
             resolve()
         }).catch(e => {
