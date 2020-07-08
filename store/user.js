@@ -63,9 +63,13 @@ export const actions = {
         })
     },
     logout({ commit }) {
-        commit('SET_LOGIN', false)
-        removeToken()
-        commit('SET_USERINFO', {})
-        this.$router.go('/')
+        return new Promise((resolve) => {
+            commit('SET_LOGIN', false)
+            removeToken()
+            commit('SET_USERINFO', {})
+            resolve()
+        }).catch(e => {
+            console.log(e)
+        })
     }
 }

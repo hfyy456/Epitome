@@ -97,7 +97,9 @@ export default {
             this.$router.push('/')
         },
         logout() {
-            this.$store.dispatch('user/logout')
+            this.$store.dispatch('user/logout').then(res => {
+                this.$router.go('/')
+            })
         },
     },
 }

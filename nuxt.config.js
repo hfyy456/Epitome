@@ -9,7 +9,7 @@ module.exports = {
   },
   axios: {
     prefix: '/api',
-    credentials: true,
+    credentials: false,
     proxy: false
   },
   proxy: {

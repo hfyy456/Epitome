@@ -3,16 +3,19 @@ import { message } from 'ant-design-vue'
 
 export default function ({ route, redirect, store }) {
     const path = route.path
-
-    if (!getToken() && path != '/' && path != '/login') {
+    const token = getToken()
+    if (!token && path != '/' && path != '/login') {
         redirect({ path: '/login' })
     } else {
         if (path == '/login') {
-            if (getToken()) {
+            console.log(path)
+            console.log(token)
+            if (token) {
                 redirect({ path: '/' })
             }
-        }
-        store
+        } else if (path == '/') {
+            return
+        } store
             .dispatch('user/getInfo')
             .then(
                 resolve => { },
@@ -20,4 +23,5 @@ export default function ({ route, redirect, store }) {
             )
             .catch(e => { })
     }
+
 }
