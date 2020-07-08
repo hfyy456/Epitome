@@ -53,11 +53,7 @@
                     />
                     <a-menu slot="overlay">
                         <a-menu-item>
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://www.alipay.com/"
-                            >1st menu item</a>
+                            <nuxt-link to='/profile'>Profile</nuxt-link>
                         </a-menu-item>
                         <a-menu-item>
                             <a

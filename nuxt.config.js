@@ -4,9 +4,10 @@ module.exports = {
   /*
   ** Headers of the page
   */
-  router: {
-    middleware: 'permission'
-  },
+  //router: {
+  // middleware: 'permission'
+  //},
+
   axios: {
     prefix: '/api',
     credentials: false,
@@ -43,6 +44,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/permission',
     '@/plugins/antd-ui',
     '@/plugins/request'
   ],

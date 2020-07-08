@@ -35,10 +35,15 @@
 </template>
 
 <script>
+import { getToken } from '@/plugins/cookies'
 export default {
     methods: {
         goLogin() {
-            this.$router.push({ path: '/login' })
+            if (!getToken()) {
+                this.$router.push({ path: '/login' })
+            } else {
+                this.$router.push({ path: '/profile' })
+            }
         },
     },
 }
