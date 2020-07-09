@@ -81,7 +81,7 @@ export default {
                 const len = this.fileList.length
                 for (var i = 0; i < len; i++) {
                     let obj = this.fileList[i]
-                    if ((obj.status = 'error')) {
+                    if (obj.status == 'error') {
                         obj.status = 'uploading'
                         const formData = new FormData()
                         const key = new Date().getTime() + i + '.jpeg'
@@ -98,9 +98,11 @@ export default {
                     let params = {
                         list: values,
                     }
-                    this.$axios.post('image/create', params).then(res => {
-                        console.log(res)
-                    })
+                    if (params.list) {
+                        this.$axios.post('image/create', params).then(res => {
+                            console.log(res)
+                        })
+                    }
                 })
             })
         },
@@ -117,6 +119,8 @@ export default {
                         resolve(pre + res.data.key)
                     })
                     .catch(e => {
+                        let obj = this.fileList[index]
+                        obj.status = 'error'
                         reject(e)
                     })
             })
