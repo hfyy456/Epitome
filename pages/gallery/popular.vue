@@ -1,97 +1,68 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div v-for="(item) in srcList"
-                 :key="item.src"
-                 :style="{'width':item.per+'%'}"
-                 class="col">
-                <a-card hoverable
-                        @mouseenter="hover"
-                        @mouseleave="leave">
-                    <a>
-                        <img slot="cover"
-                             style="height:352px;width:100%"
-                             alt="example"
-                             :src="item.src" />
-                        <div class="info"
-                             style="opacity:0">
-                            <div class="title">最基础的列表展示</div>
-                            <div class="actions">
-                                <span class="author">By Leon</span>
-                                <span class="right-items">
-                                    <span class="star">
-                                        <a-icon type="heart" />
-                                        <span>123</span>
-                                    </span>
-                                    <span class="star">
-                                        <a-icon type="eye" />
-                                        <span>123</span>
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </a-card>
-            </div>
-        </div>
+    <div>
+        <PhotoContent :srcList='srcList' />
     </div>
 </template>
 <script>
+import PhotoContent from '@/components/PhotoContent'
 export default {
     asyncData(context) {
-        name: 'gallery-popular';
+        name: 'gallery-popular'
         var srcList = [
             {
                 src:
                     '//live.staticflickr.com/65535/49993813052_c561883501_h.jpg',
                 width: 1325,
-                per: 0
+                per: 0,
             },
             {
                 src:
                     '//live.staticflickr.com/65535/49998466927_538c8d036d_h.jpg',
                 width: 1325,
-                per: 0
+                per: 0,
             },
             {
                 src:
                     '//live.staticflickr.com/65535/49998512131_b8785906b3_c.jpg',
                 width: 534,
-                per: 0
+                per: 0,
             },
             {
                 src:
                     '//live.staticflickr.com/65535/49991706422_518d3761c8_h.jpg',
                 width: 1325,
-                per: 0
-            }
-        ];
+                per: 0,
+            },
+        ]
         function setCol(srcList) {
-            var total = 0;
+            var total = 0
             for (var i = 0; i < srcList.length; i++) {
-                total += srcList[i].width;
+                total += srcList[i].width
             }
             for (var i = 0; i < srcList.length; i++) {
-                srcList[i].per = (srcList[i].width / total) * 100;
+                srcList[i].per = (srcList[i].width / total) * 100
             }
-            return srcList;
+            return srcList
         }
-        srcList = setCol(srcList);
-        return { srcList };
+        srcList = setCol(srcList)
+        return { srcList }
+    },
+    components: {
+        PhotoContent,
     },
     data() {
-        return {};
+        return {}
     },
     mounted() {},
     methods: {
         hover(e) {
-            e.target.querySelector('.info').style.opacity = 1;
+            e.target.querySelector('.info').style.opacity = 1
         },
         leave(e) {
-            e.target.querySelector('.info').style.opacity = 0;
-        }
-    }
-};
+            e.target.querySelector('.info').style.opacity = 0
+        },
+    },
+}
 </script>
 <style lang="less" scoped>
 .container {

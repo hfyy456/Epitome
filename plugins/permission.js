@@ -1,13 +1,13 @@
 import { message } from 'ant-design-vue'
 
-export default ({ app }) => {
+export default ({ app, redirect }) => {
     app.router.beforeEach(async (to, from, next) => {
         const path = to.path
         const token = app.$cookies.get('token')
         //console.log(token)
         if (token) {
             if (path == '/login') {
-                app.router.push({ path: '/' })
+                redirect('/profile')
             } else {
                 app.store
                     .dispatch('user/getInfo')

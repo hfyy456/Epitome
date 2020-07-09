@@ -79,6 +79,7 @@ export default {
                 width: 1325,
                 per: 0,
             },
+            
         ]
         function setCol(srcList) {
             var total = 0

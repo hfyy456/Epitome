@@ -76,6 +76,7 @@ export default {
         width: 94.5%;
         margin: 0 auto;
         .col {
+            text-align: left;
             display: inline-block;
             @media screen and (max-width: 1366px) {
                 display: inline-block;

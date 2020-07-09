@@ -45,7 +45,6 @@
         <span>
             <template v-if="login">
                 <a-dropdown placement="bottomCenter">
-
                     <a-avatar
                         class="avatar"
                         shape="square"
@@ -57,11 +56,7 @@
                             <nuxt-link to='/profile'>Profile</nuxt-link>
                         </a-menu-item>
                         <a-menu-item>
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="http://www.taobao.com/"
-                            >2nd menu item</a>
+                            <nuxt-link to='/upload'>Upload</nuxt-link>
                         </a-menu-item>
                         <a-menu-item>
                             <a @click="logout">Log out</a>
