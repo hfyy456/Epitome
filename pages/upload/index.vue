@@ -93,7 +93,7 @@ export default {
                     }
                 }
                 Promise.all(promises).then(values => {
-                    //message.success('Patch upload successfully!')
+                    this.$message.success('Patchly upload successfully!')
                     console.log(values)
                     let params = {
                         list: values,
@@ -102,6 +102,10 @@ export default {
                         this.$axios.post('image/create', params).then(res => {
                             console.log(res)
                         })
+                    } else {
+                        this.$message.warning(
+                            'Please do not upload the same again!'
+                        )
                     }
                 })
             })
