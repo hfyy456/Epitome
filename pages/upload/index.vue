@@ -3,7 +3,6 @@
     <div class="upload"><a-button type="primary" size="large" @click="handleUpload">Upload</a-button></div>
   <div class="clearfix">
     <a-upload
-      :before-upload='beforeUpload'
       list-type="picture-card"
       :file-list="fileList"
       @preview="handlePreview"
@@ -38,8 +37,6 @@ export default {
             previewVisible: false,
             previewImage: '',
             fileList: [],
-            list: [],
-            len: 0,
         }
     },
     mounted() {},
@@ -67,32 +64,43 @@ export default {
             this.previewVisible = true
         },
         handleChange({ fileList }) {
+            const orignLen = this.fileList.length
             const len = fileList.length
-            if (len > this.len) {
+            if (len > length) {
                 this.fileList = fileList
                 this.fileList[len - 1].status = 'error'
             } else {
                 this.fileList = fileList
             }
-            this.len = len
         },
         handleUpload() {
             const url = 'http://upload.qiniup.com'
             const pre = 'http://qiniu.hfsblog.com/'
             this.getUploadToken().then(res => {
                 let promises = []
-                for (const file of this.list) {
-                    const formData = new FormData()
-                    const index = promises.length
-                    const key = new Date().getTime() + index + '.jpeg'
-                    formData.append('token', res)
-                    formData.append('file', file)
-                    formData.append('key', key)
-                    this.fileList[index].status = 'uploading'
-                    promises.push(this.upload(url, formData, index))
+                const len = this.fileList.length
+                for (var i = 0; i < len; i++) {
+                    let obj = this.fileList[i]
+                    if ((obj.status = 'error')) {
+                        obj.status = 'uploading'
+                        const formData = new FormData()
+                        const key = new Date().getTime() + i + '.jpeg'
+                        formData.append('token', res)
+                        formData.append('file', this.fileList[i].originFileObj)
+                        formData.append('key', key)
+                        this.$set(this.fileList, i, obj)
+                        promises.push(this.upload(url, formData, i))
+                    }
                 }
                 Promise.all(promises).then(values => {
+                    //message.success('Patch upload successfully!')
                     console.log(values)
+                    let params = {
+                        list: values,
+                    }
+                    this.$axios.post('image/create', params).then(res => {
+                        console.log(res)
+                    })
                 })
             })
         },
@@ -102,8 +110,9 @@ export default {
                     .post(url, formData)
                     .then(res => {
                         const pre = 'http://qiniu.hfsblog.com/'
-                        console.log(index)
-                        this.fileList[0].status = 'done'
+                        let obj = this.fileList[index]
+                        obj.status = 'done'
+                        this.$set(this.fileList, index, obj)
                         console.log(this.fileList)
                         resolve(pre + res.data.key)
                     })
@@ -111,13 +120,6 @@ export default {
                         reject(e)
                     })
             })
-        },
-        beforeUpload(file, fileList) {
-            console.log(file)
-            console.log(fileList)
-            console.log(this.fileList)
-            this.list.push(file)
-            return false
         },
     },
 }
