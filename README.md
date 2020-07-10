@@ -1,32 +1,46 @@
-# ept
+## Epitome
 
-> My glorious Nuxt.js project
+> 一款摄影分享网站，基于Nuxtjs + Ant Design，页面设计仿500px + flickr。
 
-## Build Setup
+### Build Setup
 
 ```bash
-# install dependencies
+# 安装依赖
 $ npm install
 
-# serve with hot reload at localhost:3000
+# 启动
 $ npm run dev
 
-# build for production and launch server
+# 打包
 $ npm run build
 $ npm run start
 
-# generate static project
+# 生成静态文件
 $ npm run generate
 ```
+### 特性
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).  
-# 首页
+- 服务端渲染，首屏渲染快，提升SEO。
+- 支持响应式移动端适配。
+
+- Vuex持久化登录，Cookies保存JWT，安全高效。
+
+- 异步批量上传图片。
+
+- 图片展示动态规划宽度。
+
+- 基于Node后端打造。
+
+  
+### 页面展示
+
+#### 首页
 ![alt 属性文本](./srceenshoots/home.png)
-# 登录
+#### 登录
 ![alt 属性文本](./srceenshoots/login.png)
-# 个人中心
+#### 个人中心
 ![alt 属性文本](./srceenshoots/profile.png)
-# 发现
+#### 发现
 ![alt 属性文本](./srceenshoots/gallery.png)
-# 上传
+#### 上传
 ![alt 属性文本](./srceenshoots/upload.png)
