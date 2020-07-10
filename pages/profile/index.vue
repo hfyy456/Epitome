@@ -3,12 +3,13 @@
         <div class="profile">
             <div class='avatar-wrapper'>
                 <a-avatar
-                    :size="100"
+                    :size="110"
+                    :src='userInfo.avatar'
                     icon="user"
                 />
             </div>
             <div class='nick-wrapper'>
-                adasd
+                {{userInfo.username}}
             </div>
             <div class='item-wrapper'>
                 <ul class="items">
@@ -50,6 +51,7 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import PhotoContent from '@/components/PhotoContent'
 export default {
     asyncData(context) {
@@ -79,7 +81,6 @@ export default {
                 width: 1325,
                 per: 0,
             },
-            
         ]
         function setCol(srcList) {
             var total = 0
@@ -93,6 +94,9 @@ export default {
         }
         srcList = setCol(srcList)
         return { srcList }
+    },
+    computed: {
+        ...mapGetters({ userInfo: 'userInfo' }),
     },
     components: {
         PhotoContent,

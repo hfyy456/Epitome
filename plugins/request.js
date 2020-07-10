@@ -5,8 +5,6 @@ export default function ({ app }) {
     // 基本配置
     axios.defaults.timeout = 10000
     axios.defaults.headers.post['Content-Type'] = 'application/json'
-    axios.defaults.headers.put['Content-Type'] = 'application/json'
-    axios.defaults.headers.patch['Content-Type'] = 'application/json'
     axios.defaults.withCredentials = false
 
     axios.interceptors.request.use(config => {
