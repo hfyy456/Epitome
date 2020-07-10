@@ -3,7 +3,7 @@
         <div class="row">
             <div
                 v-for="(item) in srcList"
-                :key="item.src"
+                :key="item.url"
                 :style="{'width':item.per+'%'}"
                 class="col"
             >
@@ -17,7 +17,7 @@
                             slot="cover"
                             style="height:352px;width:100%"
                             alt="example"
-                            :src="item.src"
+                            :src="item.url"
                         />
                         <div
                             class="info"

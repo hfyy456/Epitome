@@ -24,3 +24,9 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ![alt 属性文本](./srceenshoots/home.png)
 # 登录
 ![alt 属性文本](./srceenshoots/login.png)
+# 个人中心
+![alt 属性文本](./srceenshoots/profile.png)
+# 发现
+![alt 属性文本](./srceenshoots/gallery.png)
+# 上传
+![alt 属性文本](./srceenshoots/upload.png)

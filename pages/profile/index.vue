@@ -54,34 +54,8 @@
 import { mapGetters } from 'vuex'
 import PhotoContent from '@/components/PhotoContent'
 export default {
-    asyncData(context) {
+    async asyncData(context) {
         name: 'gallery-popular'
-        var srcList = [
-            {
-                src:
-                    '//live.staticflickr.com/65535/49993813052_c561883501_h.jpg',
-                width: 1325,
-                per: 0,
-            },
-            {
-                src:
-                    '//live.staticflickr.com/65535/49998466927_538c8d036d_h.jpg',
-                width: 1325,
-                per: 0,
-            },
-            {
-                src:
-                    '//live.staticflickr.com/65535/49998512131_b8785906b3_c.jpg',
-                width: 534,
-                per: 0,
-            },
-            {
-                src:
-                    '//live.staticflickr.com/65535/49991706422_518d3761c8_h.jpg',
-                width: 1325,
-                per: 0,
-            },
-        ]
         function setCol(srcList) {
             var total = 0
             for (var i = 0; i < srcList.length; i++) {
@@ -92,11 +66,16 @@ export default {
             }
             return srcList
         }
+        const res = await context.$axios.post('image/findByAuthor', {})
+        let srcList = res.data
         srcList = setCol(srcList)
         return { srcList }
     },
     computed: {
         ...mapGetters({ userInfo: 'userInfo' }),
+    },
+    mounted() {
+        console.log(this.srcList)
     },
     components: {
         PhotoContent,

@@ -7,6 +7,7 @@
       :file-list="fileList"
       @preview="handlePreview"
       @change="handleChange"
+      :custom-request="customRequest"
       multiple
     >
         <div v-if="fileList.length < 10">
@@ -56,6 +57,9 @@ export default {
         handleCancel() {
             this.previewVisible = false
         },
+        customRequest() {
+            return //覆盖默认的上传方式，不然change会触发三次
+        },
         async handlePreview(file) {
             if (!file.url && !file.preview) {
                 file.preview = await getBase64(file.originFileObj)
@@ -63,12 +67,17 @@ export default {
             this.previewImage = file.url || file.preview
             this.previewVisible = true
         },
-        handleChange({ fileList }) {
+        async handleChange({ fileList }) {
             const orignLen = this.fileList.length
             const len = fileList.length
             if (len > length) {
                 this.fileList = fileList
                 this.fileList[len - 1].status = 'error'
+                this.fileList[len - 1].response = 'Not upload'
+                this.fileList[len - 1].width = await this.getWidth(
+                    this.fileList[len - 1].originFileObj
+                )
+                // console.log(this.fileList[len - 1].width)
             } else {
                 this.fileList = fileList
             }
@@ -93,21 +102,33 @@ export default {
                     }
                 }
                 Promise.all(promises).then(values => {
-                    this.$message.success('Patchly upload successfully!')
                     console.log(values)
                     let params = {
                         list: values,
                     }
-                    if (params.list) {
+                    if (params.list.length > 0) {
+                        this.$message.success('Patchly upload successfully!')
                         this.$axios.post('image/create', params).then(res => {
                             console.log(res)
                         })
                     } else {
                         this.$message.warning(
-                            'Please do not upload the same again!'
+                            'Please do not upload the same photos again!'
                         )
                     }
                 })
+            })
+        },
+        async getWidth(file) {
+            let img = new Image()
+            const base64 = await getBase64(file)
+            img.src = base64
+            return new Promise((resolve, reject) => {
+                img.onload = () => {
+                    resolve(img.width)
+                }
+            }).catch(e => {
+                reject(e)
             })
         },
         upload(url, formData, index) {
@@ -116,11 +137,14 @@ export default {
                     .post(url, formData)
                     .then(res => {
                         const pre = 'http://qiniu.hfsblog.com/'
+                        console.log(this.fileList)
+                        const url = pre + res.data.key
                         let obj = this.fileList[index]
                         obj.status = 'done'
+                        const width = obj.width
                         this.$set(this.fileList, index, obj)
-                        console.log(this.fileList)
-                        resolve(pre + res.data.key)
+                        let result = { url: url, width: width }
+                        resolve(result)
                     })
                     .catch(e => {
                         let obj = this.fileList[index]
