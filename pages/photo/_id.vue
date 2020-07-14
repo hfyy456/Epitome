@@ -78,7 +78,7 @@
 import authorCard from '~/components/AuthorCard.vue';
 import commentCard from '~/components/CommentCard';
 const baseUrl =
-    'https://drscdn.500px.org/photo/1017302892/q%3D80_m%3D2000/v2?sig=839793636a7cc69021af290c4f90a0f5a38f0fed10bf7a316ff481d9687ff8e3';
+    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594736598187&di=93fa8e7adf174d7584f82ff591de672d&imgtype=0&src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2Ftg%2F019%2F373%2F540%2Fc03ed83ed44b45a7888d65817e162e16.jpg';
 export default {
     components: {
         authorCard,

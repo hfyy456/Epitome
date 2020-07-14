@@ -38,6 +38,8 @@ $ npm run generate
 ![alt 属性文本](./srceenshoots/home.jpg)
 #### 登录
 ![alt 属性文本](./srceenshoots/login.jpg)
+#### 相册
+![alt 属性文本](./srceenshoots/album.jpg)
 #### 个人中心
 ![alt 属性文本](./srceenshoots/profile.jpg)
 #### 发现
