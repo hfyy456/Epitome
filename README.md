@@ -35,12 +35,12 @@ $ npm run generate
 ### 页面展示
 
 #### 首页
-![alt 属性文本](./srceenshoots/home.png)
+![alt 属性文本](./srceenshoots/home.jpg)
 #### 登录
-![alt 属性文本](./srceenshoots/login.png)
+![alt 属性文本](./srceenshoots/login.jpg)
 #### 个人中心
-![alt 属性文本](./srceenshoots/profile.png)
+![alt 属性文本](./srceenshoots/profile.jpg)
 #### 发现
-![alt 属性文本](./srceenshoots/gallery.png)
+![alt 属性文本](./srceenshoots/gallery.jpg)
 #### 上传
-![alt 属性文本](./srceenshoots/upload.png)
+![alt 属性文本](./srceenshoots/upload.jpg)
