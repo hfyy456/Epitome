@@ -1,6 +1,6 @@
 ## Epitome
 
-> 一款摄影分享网站，基于Nuxtjs + Ant Design，页面设计仿500px + flickr。
+> 一款摄影分享网站，基于Nuxt.js + Ant Design，页面设计仿500px + flickr。
 
 ### Build Setup
 
