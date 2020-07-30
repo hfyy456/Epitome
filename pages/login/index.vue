@@ -164,7 +164,7 @@ export default {
             } else {
                 this.$axios
                     .post('user/username', { username: value })
-                    .then(res => {
+                    .then((res) => {
                         console.log(res.message)
                         const code = res.code
                         const msg = res.message
@@ -182,7 +182,7 @@ export default {
             if (matchArray == null) {
                 callback(new Error('Please enter corret Email address'))
             } else {
-                this.$axios.post('user/email', { email: value }).then(res => {
+                this.$axios.post('user/email', { email: value }).then((res) => {
                     console.log(res.message)
                     const code = res.code
                     const msg = res.message
@@ -233,15 +233,15 @@ export default {
                 ...this.loginForm,
             }
             params['password'] = md5(params['password'])
-            this.$refs[formName].validate(valid => {
+            this.$refs[formName].validate((valid) => {
                 if (valid) {
                     this.$store.dispatch('user/login', params).then(
-                        resolve => {
+                        (resolve) => {
                             this.$message.success(resolve.message)
                             this.$refs[formName].clearValidate()
                             this.$router.push('/')
                         },
-                        reject => {
+                        (reject) => {
                             this.$message.error(reject)
                             this.$refs[formName].clearValidate()
                         }
@@ -256,15 +256,15 @@ export default {
                 ...this.registForm,
             }
             params['password'] = md5(params['password'])
-            this.$refs[formName].validate(valid => {
+            this.$refs[formName].validate((valid) => {
                 if (valid) {
                     this.$store.dispatch('user/regist', params).then(
-                        resolve => {
+                        (resolve) => {
                             this.$message.success(resolve.message)
                             this.$refs[formName].clearValidate()
                             this.$router.push('/')
                         },
-                        reject => {
+                        (reject) => {
                             this.$message.error(reject)
                             this.$refs[formName].clearValidate()
                         }
@@ -279,7 +279,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .container {
-    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591956136934&di=dbac6a5f5456d9c62fba70924f9e852f&imgtype=0&src=http%3A%2F%2Fwww.33lc.com%2Farticle%2FUploadPic%2F2012-8%2F20128161011230274.jpg);
+    background-image: url(https://qiniu.hfsblog.com/1594351711798.jpeg);
+    background-size: cover;
     margin: 0 auto;
     min-height: calc(100vh - 104px);
     display: flex;

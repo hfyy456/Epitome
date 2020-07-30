@@ -31,7 +31,7 @@
                 >Community</a>
             </a-menu-item>
         </a-menu>
-        <span>
+        <span class="search-container">
             <a-icon
                 type="search"
                 style="font-size:15px;"
@@ -44,6 +44,15 @@
         </span>
         <span>
             <template v-if="login">
+                <a-badge
+                    dot
+                    class="message"
+                >
+                    <a-icon
+                        type="message"
+                        style="font-size:24px;"
+                    />
+                </a-badge>
                 <a-dropdown placement="bottomCenter">
                     <a-avatar
                         class="avatar"
@@ -88,7 +97,7 @@ export default {
             this.$router.push('/')
         },
         logout() {
-            this.$store.dispatch('user/logout').then(res => {
+            this.$store.dispatch('user/logout').then((res) => {
                 this.goIndex()
             })
         },
@@ -96,7 +105,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@val: 18%;
+@val: '25% - 91px';
 .search-input {
     width: 15%;
     border: none;
@@ -104,71 +113,49 @@ export default {
     &:focus {
         outline: none;
     }
-    @media screen and(max-width: 1024px) {
-        width: 20%;
-    }
-    @media screen and(max-width: 380px) {
-        width: 15%;
+}
+.search-container {
+    @media screen and (max-width: 670px) {
+        display: none;
     }
 }
 .avatar {
     display: inline-block;
-    position: relative;
+    position: absolute;
     bottom: 3px;
     cursor: pointer;
+    right: 1px;
+}
+.message {
+    position: absolute;
+    right: 60px;
+    top: 28%;
 }
 .sign {
     font-size: 18px;
     padding: 0;
     border: none;
-    margin-left: 6px;
     font-weight: 500;
+    right: 2px;
+    line-height: 47px;
+    position: absolute;
 }
 .items {
-    width: calc(~'90% - @{val}');
+    width: calc(~'100% - @{val}');
     display: inline-block;
     border-bottom: none;
-    @media screen and(max-width: 1614px) {
-        width: 60%;
-    }
-    @media screen and(max-width: 1366px) {
-        width: 55%;
-    }
-    @media screen and(max-width: 1024px) {
-        width: 50%;
-    }
-    @media screen and(max-width: 800px) {
-        width: 45%;
-    }
-    @media screen and(max-width: 500px) {
-        width: 31%;
-    }
-    @media screen and(max-width: 430px) {
-        width: 27%;
-    }
-    @media screen and(max-width: 390px) {
-        width: 23%;
-    }
-    @media screen and(max-width: 360px) {
-        width: 18%;
-    }
-    @media screen and(max-width: 320px) {
-        width: 16%;
-    }
 }
 .logo {
-    margin-left: 45px;
-    @media screen and(max-width: 1024px) {
-        margin-left: 10px;
-    }
     font-size: 24px;
     font-weight: 500;
+    padding-left: 5px;
     &:hover {
         color: #1890ff;
         cursor: pointer;
     }
 }
 .nav {
+    position: relative;
     border-bottom: 1px solid #e8e8e8;
     box-shadow: 0 2px 8px #f0f1f2;
 }
