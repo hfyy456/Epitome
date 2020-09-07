@@ -34,11 +34,11 @@ html {
     box-sizing: border-box;
 }
 ::-webkit-scrollbar {
-  width: 7px;
-  background-color: #afafaf;
+    width: 7px;
+    background-color: #afafaf;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #636363;
+    background-color: #636363;
 }
 *,
 *:before,
