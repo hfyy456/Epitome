@@ -46,6 +46,7 @@ module.exports = {
   plugins: [
     '@/plugins/permission',
     { src: '@/plugins/antd-ui', ssr: true },
+    { src: '@/plugins/no-ssr', ssr: false },
     '@/plugins/request',
   ],
   /*

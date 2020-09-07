@@ -33,7 +33,13 @@ html {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 }
-
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: #afafaf;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #636363;
+}
 *,
 *:before,
 *:after {
