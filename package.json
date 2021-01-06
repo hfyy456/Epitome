@@ -13,7 +13,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
     "ant-design-vue": "^1.1.10",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "blueimp-md5": "^2.16.0",
     "cookie-parser": "^1.4.5",
     "cookie-universal-nuxt": "^2.1.4",
