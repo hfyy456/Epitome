@@ -24,9 +24,7 @@
           <a-tab-pane key="3" tab="Community">
             Content of Tab Pane 3
           </a-tab-pane>
-          <a-tab-pane key="4" tab="About">
-            Content of Tab Pane 3
-          </a-tab-pane>
+          <a-tab-pane key="4" tab="About"> Content of Tab Pane 3 </a-tab-pane>
         </a-tabs>
       </div>
     </div>
@@ -36,8 +34,8 @@
 import { mapGetters } from 'vuex'
 import PhotoContent from '@/components/PhotoContent'
 export default {
+  name: 'profile',
   async asyncData(context) {
-    name: 'gallery-popular'
     function setCol(srcList) {
       var total = 0
       for (var i = 0; i < srcList.length; i++) {

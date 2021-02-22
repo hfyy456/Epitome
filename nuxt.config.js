@@ -14,8 +14,8 @@ module.exports = {
   },
   proxy: {
     '/api': {
-      //target: 'http://127.0.0.1:10086/', // 目标接口域名
-      target: 'https://www.hfsblog.com/', // 目标接口域名
+      target: 'http://127.0.0.1:10086/', // 目标接口域名
+      //target: 'https://www.hfsblog.com/', // 目标接口域名
       changeOrigin: true, // 表示是否跨域
     }
   },
