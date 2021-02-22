@@ -24,7 +24,7 @@
     "mongoose": "^5.9.21",
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
-    "vue-waterfall-lazyload": "^1.0.9"
+    "vue-waterfall-lazyload": "^1.1.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
