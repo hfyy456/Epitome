@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="headers">
-      <h1 class="title">{{ $route.path | setTitle }}</h1>
-      <h2 class="subtitle">{{ $route.path | setSubtitle }}</h2>
-      <a-menu v-model="current" class="tabs" mode="horizontal">
+    <div class="gallery-headers">
+      <h1 class="gallery-title">{{ $route.path | setTitle }}</h1>
+      <h2 class="gallery-subtitle">{{ $route.path | setSubtitle }}</h2>
+      <a-menu v-model="current" class="gallery-tabs" mode="horizontal">
         <a-menu-item key="popular">
           <nuxt-link to="/gallery/popular">Popular</nuxt-link>
         </a-menu-item>
@@ -12,7 +12,7 @@
         </a-menu-item>
       </a-menu>
     </div>
-    <div class="content">
+    <div class="gallery-content">
       <nuxt-child />
     </div>
   </div>
@@ -53,9 +53,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.headers {
+.gallery-headers {
   background-color: #fff;
-  .title {
+  .gallery-title {
     padding-left: 50px;
     margin: 0;
     font-size: 40px;
@@ -63,7 +63,7 @@ export default {
       display: none;
     }
   }
-  .subtitle {
+  .gallery-subtitle {
     padding-left: 50px;
     margin: 0;
     font-size: 15px;
@@ -72,7 +72,7 @@ export default {
       display: none;
     }
   }
-  .tabs {
+  .gallery-tabs {
     padding-left: 50px;
     a {
       color: #71767a;

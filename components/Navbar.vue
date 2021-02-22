@@ -36,6 +36,9 @@
             <a-menu-item>
               <nuxt-link to="/upload">Upload</nuxt-link>
             </a-menu-item>
+             <a-menu-item>
+              <nuxt-link to="/settings/account">Settings</nuxt-link>
+            </a-menu-item>
             <a-menu-item>
               <a @click="logout">Log out</a>
             </a-menu-item>
