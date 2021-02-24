@@ -9,17 +9,17 @@
           :label-col="labelCol"
           :wrapper-col="wrapperCol"
         >
-          <a-form-model-item ref="name" label="Username" prop="name">
+          <a-form-model-item ref="nickname" label="Nickname" prop="nickname">
             <a-input
-              v-model="user.username"
+              v-model="user.nickname"
               @blur="
                 () => {
-                  $refs.name.onFieldBlur()
+                  $refs.nickname.onFieldBlur()
                 }
               "
             />
           </a-form-model-item>
-          <a-form-model-item label="Birthday" required prop="date1">
+          <a-form-model-item label="Birthday" prop="birthday">
             <a-date-picker
               v-model="user.birthday"
               type="date"
@@ -42,8 +42,8 @@
           </a-form-model-item>
 
           <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-            <a-button type="primary"> Create </a-button>
-            <a-button style="margin-left: 10px"> Reset </a-button>
+            <a-button type="primary" @click="onSubmit">Submit</a-button>
+            <a-button @click="onRest" style="margin-left: 10px">Reset</a-button>
           </a-form-model-item>
         </a-form-model>
       </a-card>
@@ -79,13 +79,12 @@ export default {
       labelCol: { span: 7 },
       wrapperCol: { span: 14 },
       residences,
-      other: '',
       location: [],
       rules: {
-        name: [
+        nickname: [
           {
             required: true,
-            message: 'Please input Activity name',
+            message: 'Please input nickname',
             trigger: 'blur',
           },
         ],
@@ -94,15 +93,25 @@ export default {
     }
   },
   mounted() {
-    this.getInfor()
+    this.getInfo()
   },
   methods: {
-    getInfor() {
+    onSubmit() {
+      this.updateUserInfo()
+    },
+    onRest() {
+      this.getInfo()
+    },
+    getInfo() {
       this.$store.dispatch('user/getInfo').then((res) => {
-        this.user = res.data
+        this.user = Object.assign({}, res.data)
         this.location = this.user.location.split(',').reverse()
-        console.log(this.location)
-        console.log(this.user)
+      })
+    },
+    updateUserInfo() {
+      this.$store.dispatch('user/updateInfo', this.user).then((res) => {
+        this.user = Object.assign({}, res.data)
+        this.location = this.user.location.split(',').reverse()
       })
     },
   },
