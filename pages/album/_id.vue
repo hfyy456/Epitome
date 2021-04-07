@@ -37,12 +37,12 @@
     </div>
 </template>
 <script>
-import authorCard from '~/components/AuthorCard.vue'
-import commentCard from '~/components/CommentCard'
+import AuthorCard from '~/components/AuthorCard.vue'
+import CommentCard from '~/components/CommentCard'
 export default {
     components: {
-        authorCard,
-        commentCard,
+        AuthorCard,
+        CommentCard,
     },
     data() {
         return {

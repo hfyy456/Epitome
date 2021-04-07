@@ -13,8 +13,8 @@
           </a-menu-item>
         </a-menu-item-group>
       </a-sub-menu>
-      <a-menu-item key="a" class="item-2">
-        <a href="https://antdv.com" target="_blank" rel="noopener noreferrer">Community</a>
+      <a-menu-item key="community" class="item-2">
+            <nuxt-link to="/community">Community</nuxt-link>
       </a-menu-item>
     </a-menu>
     <span class="search-container">

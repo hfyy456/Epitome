@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'universal',
+  mode: "universal",
   /*
    ** Headers of the page
    */
@@ -8,64 +8,65 @@ module.exports = {
   //},
 
   axios: {
-    prefix: '/api',
+    prefix: "/api",
     credentials: true,
     proxy: true
   },
   proxy: {
-    '/api': {
-      target: 'http://127.0.0.1:10086/', // 目标接口域名
-      //target: 'https://www.hfsblog.com/', // 目标接口域名
-      changeOrigin: true, // 表示是否跨域
+    "/api": {
+      //target: 'http://127.0.0.1:10086/', // 目标接口域名
+      target: "https://www.hfsblog.com/", // 目标接口域名
+      changeOrigin: true // 表示是否跨域
     }
   },
   head: {
-    title: process.env.npm_package_name || '',
-    meta: [{
-        charset: 'utf-8'
+    title: process.env.npm_package_name || "",
+    meta: [
+      {
+        charset: "utf-8"
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
       },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
       }
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }]
+    link: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/favicon.ico"
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#fff'
+    color: "#fff"
   },
   /*
    ** Global CSS
    */
-  css: [
-    'ant-design-vue/dist/antd.css'
-  ],
+  css: ["ant-design-vue/dist/antd.css"],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/permission',
+    "@/plugins/permission",
     {
-      src: '@/plugins/antd-ui',
+      src: "@/plugins/antd-ui",
       ssr: true
     },
     {
-      src: '@/plugins/no-ssr',
+      src: "@/plugins/no-ssr",
       ssr: false
     },
-    '@/plugins/request',
+    "@/plugins/request"
   ],
   /*
    ** Nuxt.js dev-modules
@@ -74,14 +75,8 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    'cookie-universal-nuxt',
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-  ],
-  serverMiddleware: [
-
-  ],
+  modules: ["cookie-universal-nuxt", "@nuxtjs/axios", "@nuxtjs/proxy"],
+  serverMiddleware: [],
   /*
    ** Build configuration
    */
@@ -91,4 +86,4 @@ module.exports = {
      */
     extend(config, ctx) {}
   }
-}
+};

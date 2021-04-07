@@ -57,14 +57,14 @@
   </div>
 </template>
 <script>
-import authorCard from '~/components/AuthorCard.vue'
-import commentCard from '~/components/CommentCard'
+import AuthorCard from '~/components/AuthorCard.vue'
+import CommentCard from '~/components/CommentCard'
 const baseUrl =
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594736598187&di=93fa8e7adf174d7584f82ff591de672d&imgtype=0&src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2Ftg%2F019%2F373%2F540%2Fc03ed83ed44b45a7888d65817e162e16.jpg'
 export default {
   components: {
-    authorCard,
-    commentCard
+    AuthorCard,
+    CommentCard
   },
   data() {
     return {
