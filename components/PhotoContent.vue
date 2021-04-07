@@ -16,6 +16,7 @@
               :src="item.url"
             />
             <div class="info" style="opacity: 0">
+              <div class="editor">dasdsa</div>
               <div class="title">最基础的列表展示</div>
               <div class="actions">
                 <span class="author">By Leon</span>
