@@ -23,7 +23,7 @@
     "less-loader": "^6.1.0",
     "mongoose": "^5.9.21",
     "node-sass": "^4.14.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "vue-waterfall-lazyload": "^1.1.2"
   },
   "devDependencies": {
